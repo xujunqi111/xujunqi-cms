@@ -5,23 +5,24 @@
 	<select id="select" resultType="Category">
 		SELECT * FROM cms_category
 	</select>
-	
+
 	<select id="selectById" resultType="Category">
-		SELECT * FROM cms_category WHERE id=#{id}
+		SELECT * FROM cms_category
+		WHERE id=#{id}
 	</select>
-	
+
 	<insert id="insert">
 		INSERT INTO cms_category(name,channel_id)
-		VALUES 
+		VALUES
 		(#{name},#{channel_id})
 	</insert>
-	
+
 	<update id="update">
 		UPDATE cms_category
- 		SET name=#{name},channel_id=#{channel_id} 
+		SET name=#{name},channel_id=#{channel_id}
 		WHERE id=#{id}
 	</update>
-	
+
 	<delete id="delete">
 		DELETE FROM cms_category WHERE id in(${ids})
 	</delete>

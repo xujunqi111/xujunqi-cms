@@ -23,6 +23,12 @@ public class User {
 	private Integer score;
 	/** 0:普通用户,1:管理员 **/
 	private String role;
+	/** 个人博客网址 **/
+	private String url;
+	/** 创建时间 **/
+	private Date create_time;
+	/** 修改时间 **/
+	private Date update_time;
 
 	public Integer getId() {
 		return id;
@@ -104,15 +110,41 @@ public class User {
 		this.role = role;
 	}
 
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
+	public Date getCreate_time() {
+		return create_time;
+	}
+
+	public void setCreate_time(Date create_time) {
+		this.create_time = create_time;
+	}
+
+	public Date getUpdate_time() {
+		return update_time;
+	}
+
+	public void setUpdate_time(Date update_time) {
+		this.update_time = update_time;
+	}
+
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", username=" + username + ", headimg=" + headimg + ", password=" + password
 				+ ", nickname=" + nickname + ", birthday=" + birthday + ", gender=" + gender + ", locked=" + locked
-				+ ", score=" + score + ", role=" + role + "]";
+				+ ", score=" + score + ", role=" + role + ", url=" + url + ", create_time=" + create_time
+				+ ", update_time=" + update_time + "]";
 	}
 
 	public User(Integer id, String username, String headimg, String password, String nickname, Date birthday,
-			Integer gender, Integer locked, Integer score, String role) {
+			Integer gender, Integer locked, Integer score, String role, String url, Date create_time,
+			Date update_time) {
 		super();
 		this.id = id;
 		this.username = username;
@@ -124,6 +156,9 @@ public class User {
 		this.locked = locked;
 		this.score = score;
 		this.role = role;
+		this.url = url;
+		this.create_time = create_time;
+		this.update_time = update_time;
 	}
 
 	public User() {

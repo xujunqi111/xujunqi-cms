@@ -24,10 +24,11 @@ public class UserTests {
 		System.out.println(userList);
 
 		User user = new User();
-		user.setNickname("xujq");
-		//userDao.insert(user);
+		user.setNickname("jj");
+		user.setUsername("22");
+		userDao.insert(user);
 		
-		userDao.delete("202");
+		//userDao.delete("202");
 
 		User selectById = userDao.selectById(199);
 		System.out.println(selectById);
