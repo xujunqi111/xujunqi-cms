@@ -9,7 +9,7 @@
 <link href="/public/css/index.css" rel="stylesheet">
 </head>
 <body>
-<div class="header">
+	<div class="header">
 		<ul class="nav">
 			<li class="nav-item" style="margin-left: 12px;"><a
 				class="navbar-brand" href="#"> <img

@@ -10,7 +10,7 @@ public interface BaseDao<T> {
 
 	List<User> select(T t); // 按条件查询
 
-	User selectById(Integer id); // 根据Id查询
+	T selectById(Integer id); // 根据Id查询
 
 	int insert(T t); // 新增
 	
