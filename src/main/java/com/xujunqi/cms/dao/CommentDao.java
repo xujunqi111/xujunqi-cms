@@ -1,5 +1,7 @@
 package com.xujunqi.cms.dao;
 
-public interface CommentDao extends  BaseDao<CommentDao> {
+import com.xujunqi.cms.pojo.Comment;
+
+public interface CommentDao extends  BaseDao<Comment> {
 
 }

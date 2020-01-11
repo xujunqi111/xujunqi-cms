@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -9,35 +9,19 @@
 <link href="/public/css/index.css" rel="stylesheet">
 </head>
 <body>
-<!-- 头部导航 -->
-	<div class="header">
-		<ul class="nav">
-			<li class="nav-item" style="margin-left: 12px;"><a
-				class="navbar-brand" href="#"> <img	src="https://v4.bootcss.com/docs/4.3/assets/brand/bootstrap-solid.svg" width="30" height="30" alt="">
-			</a></li>
-			<li class="nav-item"><a class="nav-link active" href="/">首页</a>
-			</li>
-			<li class="nav-item"><a class="nav-link" href="/user/center">个人中心</a>
-			</li>
-			<li class="nav-item"><a class="nav-link" href="/user/login">登录</a>
-			</li>
-			<li class="nav-item"><a class="nav-link disabled" href="#"
-				tabindex="-1" aria-disabled="true">退出</a></li>
-		</ul>
-	</div>
+	<!-- 头部导航 -->
+	<jsp:include page="./common/user/head-top.jsp"></jsp:include>
 
 	<div class="container-fluid" style="margin-top: 6px;">
 		<div class="row offset-1">
 			<!-- 频道 -->
-			<div class="col-1">
+			<div class="col-1" style="padding-right: 5px;padding-left: 5px;">
 				<h2>1710F</h2>
 				<ul class="nav flex-column">
 					<li class="nav-item "><a class="nav-link" href="#">热点</a></li>
-					<li class="nav-item"><a class="nav-link active" href="#">科技</a>
-					</li>
+					<li class="nav-item"><a class="nav-link active" href="#">科技</a></li>
 					<li class="nav-item"><a class="nav-link" href="#">旅游</a></li>
-					<li class="nav-item"><a class="nav-link disabled" href="#"
-						tabindex="-1" aria-disabled="true">Disabled</a></li>
+					<li class="nav-item"><a class="nav-link disabled" href="#">Disabled</a></li>
 				</ul>
 
 			</div>
@@ -80,34 +64,35 @@
 					<li class="nav-item"><a class="nav-link" href="#">文化</a></li>
 				</ul>
 				<!-- 文章列表 -->
-				<ul class="list-unstyled" style="margin-top: 6px;">
-					<li class="media" style="margin-bottom: 3px;"><img
-						src="http://p1.pstatp.com/large/pgc-image/4ab237b9682f4c0286da5c5e6823dc87"
-						style="height: 108px; width: 175px;" class="mr-3" alt="...">
-						<div class="media-body">
-
-							<h5 class="mt-0 mb-1" style="color: #999; font-weight: 700">
-								<a href="/article/detail/1.html" target="_blank">乐视网：公司管理层正在努力维持公司的持续经营能力</a>
-							</h5>
-
-							<span>2020-01-19</span>
-						</div></li>
-					<li class="media" style="margin-bottom: 3px;"><img
-						src="http://p1.pstatp.com/large/pgc-image/4ab237b9682f4c0286da5c5e6823dc87"
-						style="height: 108px; width: 175px;" class="mr-3" alt="...">
-						<div class="media-body">
-							<h5 class="mt-0 mb-1" style="color: #999; font-weight: 700">乐视网：公司管理层正在努力维持公司的持续经营能力</h5>
-							<span>2020-01-19</span>
-						</div></li>
-					<li class="media"><img
-						src="http://p1.pstatp.com/large/pgc-image/4ab237b9682f4c0286da5c5e6823dc87"
-						style="height: 108px; width: 175px;" class="mr-3" alt="...">
-						<div class="media-body">
-							<h5 class="mt-0 mb-1" style="color: #999; font-weight: 700">乐视网：公司管理层正在努力维持公司的持续经营能力</h5>
-							<span>2020-01-19</span>
-						</div></li>
-				</ul>
-
+				<div style="margin-top: 18px;">
+				  	<div class="media">
+					  <img src="http://p1.pstatp.com/large/pgc-image/4ab237b9682f4c0286da5c5e6823dc87" class="mr-3" style="height: 108px; width: 175px;">
+					  <div class="media-body">
+					    <h4 class="mt-1">
+					    	<a href="/article/detail/1.html" target="_blank">乐视网：公司管理层正在努力维持公司的持续经营能力</a>
+					    </h4>
+					    <p style="color: #999;">蝈蝈 2020-01-24 19:20:20</p>
+					  </div>
+					</div>
+				  	<div class="media">
+					  <img src="http://p1.pstatp.com/large/pgc-image/4ab237b9682f4c0286da5c5e6823dc87" class="mr-3" style="height: 108px; width: 175px;">
+					  <div class="media-body">
+					    <h4 class="mt-1">
+					    	<a href="/article/detail/1.html" target="_blank">乐视网：公司管理层正在努力维持公司的持续经营能力</a>
+					    </h4>
+					    <p style="color: #999;">蝈蝈 2020-01-24</p>
+					  </div>
+					</div>
+				  	<div class="media">
+					  <img src="http://p1.pstatp.com/large/pgc-image/4ab237b9682f4c0286da5c5e6823dc87" class="mr-3" style="height: 108px; width: 175px;">
+					  <div class="media-body">
+					    <h4 class="mt-1">
+					    	<a href="/article/detail/1.html" target="_blank">乐视网：公司管理层正在努力维持公司的持续经营能力</a>
+					    </h4>
+					    <p style="color: #999;">蝈蝈 2020-01-24</p>
+					  </div>
+					</div>
+				</div>
 				<!-- 分页 -->
 				<ul class="pagination">
 					<li class="page-item"><a class="page-link" href="#"

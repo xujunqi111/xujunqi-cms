@@ -1,5 +1,7 @@
 package com.xujunqi.cms.dao;
 
-public interface LinkDao extends  BaseDao<LinkDao> {
+import com.xujunqi.cms.pojo.Link;
+
+public interface LinkDao extends  BaseDao<Link> {
 
 }

@@ -1,5 +1,7 @@
 package com.xujunqi.cms.dao;
 
-public interface ArticleDao extends  BaseDao<ArticleDao> {
+import com.xujunqi.cms.pojo.Article;
+
+public interface ArticleDao extends  BaseDao<Article> {
 
 }

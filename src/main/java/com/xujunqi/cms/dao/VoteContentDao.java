@@ -1,5 +1,7 @@
 package com.xujunqi.cms.dao;
 
-public interface VoteContentDao extends  BaseDao<VoteContentDao> {
+import com.xujunqi.cms.pojo.VoteContent;
+
+public interface VoteContentDao extends  BaseDao<VoteContent> {
 
 }

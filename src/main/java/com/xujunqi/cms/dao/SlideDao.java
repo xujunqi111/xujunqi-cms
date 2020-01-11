@@ -1,5 +1,7 @@
 package com.xujunqi.cms.dao;
 
-public interface SlideDao extends  BaseDao<SlideDao> {
+import com.xujunqi.cms.pojo.Slide;
+
+public interface SlideDao extends  BaseDao<Slide> {
 
 }

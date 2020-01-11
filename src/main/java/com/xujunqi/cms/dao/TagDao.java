@@ -1,5 +1,7 @@
 package com.xujunqi.cms.dao;
 
-public interface TagDao extends  BaseDao<TagDao> {
+import com.xujunqi.cms.pojo.Tag;
+
+public interface TagDao extends  BaseDao<Tag> {
 
 }

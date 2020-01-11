@@ -1,6 +1,13 @@
 package com.xujunqi.cms.pojo;
 
+import java.util.Date;
+
 public class Article {
+	/** 所属栏目 **/
+	private String channel_name;
+	/** 所属分类 **/
+	private String category_name;
+
 	/**  **/
 	private Integer id;
 	/** 标题 **/
@@ -19,6 +26,34 @@ public class Article {
 	private Integer hits;
 	/** 是否热门 **/
 	private Integer hot;
+	/** 0：刚发布；2：草稿；1审核通过；-1 审核未通过;3:禁用 **/
+	private Integer status;
+	/** 0:正常,1:删除 **/
+	private Integer deleted;
+	/** 发布时间 **/
+	private Date created;
+	/** 更新时间 **/
+	private Date updated;
+	/** 评论数量 **/
+	private Integer commentCnt;
+	/** 投诉次数 **/
+	private Integer tousuCnt;
+
+	public String getChannel_name() {
+		return channel_name;
+	}
+
+	public void setChannel_name(String channel_name) {
+		this.channel_name = channel_name;
+	}
+
+	public String getCategory_name() {
+		return category_name;
+	}
+
+	public void setCategory_name(String category_name) {
+		this.category_name = category_name;
+	}
 
 	public Integer getId() {
 		return id;
@@ -92,16 +127,69 @@ public class Article {
 		this.hot = hot;
 	}
 
-	@Override
-	public String toString() {
-		return "Article [id=" + id + ", title=" + title + ", content=" + content + ", picture=" + picture
-				+ ", channel_id=" + channel_id + ", category_id=" + category_id + ", user_id=" + user_id + ", hits="
-				+ hits + ", hot=" + hot + "]";
+	public Integer getStatus() {
+		return status;
 	}
 
-	public Article(Integer id, String title, String content, String picture, Integer channel_id, Integer category_id,
-			Integer user_id, Integer hits, Integer hot) {
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
+
+	public Integer getDeleted() {
+		return deleted;
+	}
+
+	public void setDeleted(Integer deleted) {
+		this.deleted = deleted;
+	}
+
+	public Date getCreated() {
+		return created;
+	}
+
+	public void setCreated(Date created) {
+		this.created = created;
+	}
+
+	public Date getUpdated() {
+		return updated;
+	}
+
+	public void setUpdated(Date updated) {
+		this.updated = updated;
+	}
+
+	public Integer getCommentCnt() {
+		return commentCnt;
+	}
+
+	public void setCommentCnt(Integer commentCnt) {
+		this.commentCnt = commentCnt;
+	}
+
+	public Integer getTousuCnt() {
+		return tousuCnt;
+	}
+
+	public void setTousuCnt(Integer tousuCnt) {
+		this.tousuCnt = tousuCnt;
+	}
+
+	@Override
+	public String toString() {
+		return "Article [channel_name=" + channel_name + ", category_name=" + category_name + ", id=" + id + ", title="
+				+ title + ", content=" + content + ", picture=" + picture + ", channel_id=" + channel_id
+				+ ", category_id=" + category_id + ", user_id=" + user_id + ", hits=" + hits + ", hot=" + hot
+				+ ", status=" + status + ", deleted=" + deleted + ", created=" + created + ", updated=" + updated
+				+ ", commentCnt=" + commentCnt + ", tousuCnt=" + tousuCnt + "]";
+	}
+
+	public Article(String channel_name, String category_name, Integer id, String title, String content, String picture,
+			Integer channel_id, Integer category_id, Integer user_id, Integer hits, Integer hot, Integer status,
+			Integer deleted, Date created, Date updated, Integer commentCnt, Integer tousuCnt) {
 		super();
+		this.channel_name = channel_name;
+		this.category_name = category_name;
 		this.id = id;
 		this.title = title;
 		this.content = content;
@@ -111,6 +199,12 @@ public class Article {
 		this.user_id = user_id;
 		this.hits = hits;
 		this.hot = hot;
+		this.status = status;
+		this.deleted = deleted;
+		this.created = created;
+		this.updated = updated;
+		this.commentCnt = commentCnt;
+		this.tousuCnt = tousuCnt;
 	}
 
 	public Article() {

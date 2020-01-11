@@ -1,5 +1,7 @@
 package com.xujunqi.cms.dao;
 
-public interface CategoryDao extends  BaseDao<CategoryDao> {
+import com.xujunqi.cms.pojo.Category;
+
+public interface CategoryDao extends  BaseDao<Category> {
 
 }

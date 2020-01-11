@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -9,7 +9,7 @@
 <link href="/public/css/index.css" rel="stylesheet">
 </head>
 <body>
-<div class="header">
+	<div class="header">
 		<ul class="nav">
 			<li class="nav-item" style="margin-left: 12px;">
 				<a	class="navbar-brand" href="#"> 
@@ -28,7 +28,7 @@
 		<div class="row offset-1">
 			<div class="col-6">
 				<h1>杨元庆回应常程离职：联想不会放弃中国手机市场，会寻找时机</h1>
-				<h2>蝈蝈 发布时间：2019-12-12日</h2>
+				<h3 style="color: #777;">蝈蝈    发布时间：2019-12-12日</h3>
 				<div>
 					<div class="article-content">
 						<p>
@@ -68,6 +68,30 @@
 				<div class="right">
 					<div>相关文章</div>
 					<ul class="list-unstyled">
+						<li class="media"><img
+							src="http://p1.pstatp.com/large/pgc-image/4ab237b9682f4c0286da5c5e6823dc87"
+							style="height: 72px; width: 72px;" class="mr-3" alt="...">
+							<div class="media-body">
+								<h5 class="mt-0 mb-1">电子眼全面升级，新增5项功能！</h5>
+							</div></li>
+						<li class="media"><img
+							src="http://p1.pstatp.com/large/pgc-image/4ab237b9682f4c0286da5c5e6823dc87"
+							style="height: 72px; width: 72px;" class="mr-3" alt="...">
+							<div class="media-body">
+								<h5 class="mt-0 mb-1">电子眼全面升级，新增5项功能！</h5>
+							</div></li>
+						<li class="media"><img
+							src="http://p1.pstatp.com/large/pgc-image/4ab237b9682f4c0286da5c5e6823dc87"
+							style="height: 72px; width: 72px;" class="mr-3" alt="...">
+							<div class="media-body">
+								<h5 class="mt-0 mb-1">电子眼全面升级，新增5项功能！</h5>
+							</div></li>
+						<li class="media"><img
+							src="http://p1.pstatp.com/large/pgc-image/4ab237b9682f4c0286da5c5e6823dc87"
+							style="height: 72px; width: 72px;" class="mr-3" alt="...">
+							<div class="media-body">
+								<h5 class="mt-0 mb-1">电子眼全面升级，新增5项功能！</h5>
+							</div></li>
 						<li class="media"><img
 							src="http://p1.pstatp.com/large/pgc-image/4ab237b9682f4c0286da5c5e6823dc87"
 							style="height: 72px; width: 72px;" class="mr-3" alt="...">
