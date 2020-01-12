@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>个人中心</title>
+<title>CMS后台管理</title>
 <link href="/public/css/bootstrap.min.css" rel="stylesheet">
 <link href="/public/css/index.css" rel="stylesheet">
 
@@ -19,14 +19,13 @@ KindEditor.ready(function(K) {});
 </head>
 <body>
 	<!-- 头部导航 -->
-	<jsp:include page="../common/user/head-top.jsp"></jsp:include>
+	<jsp:include page="../common/admin/head-top.jsp"></jsp:include>
 	<div class="container-fluid" style="margin-top: 6px;">
 		<div class="row offset-1" style="margin-top: 10px;">
 			<div class="col-2">
 				<div class="nav flex-column nav-pills" aria-orientation="vertical">
-					<a class="nav-link active" href="javascript:;" url="/article/add">发布文章</a>
-					<a class="nav-link" href="javascript:;" url="/article/articles">我的文章</a> 
-					<a class="nav-link"	href="javascript:;" url="/user/set">个人设置</a>
+					<a class="nav-link active" href="javascript:;" url="/admin/user">用户管理</a>
+					<a class="nav-link" href="javascript:;" url="/admin/articles">文章管理</a> 
 				</div>
 			</div>
 			<div class="col-8" id="main">

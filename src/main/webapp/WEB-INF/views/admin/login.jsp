@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>用户登录</title>
+<title>后台登录</title>
 <link href="/public/css/bootstrap.min.css" rel="stylesheet">
 <link href="/public/css/index.css" rel="stylesheet">
 </head>
@@ -14,8 +14,8 @@
 	
 	<div class="container-fluid" style="margin-top: 6px;">
 		<div class="row offset-4" style="margin-top: 180px;">
-			<div class="col-5">
-				<h1>欢迎回来</h1>
+			<div class="col-6">
+				<h1>欢迎使用CMS后台管理系统</h1>
 				<div class="alert alert-success" role="alert" style="display: none"></div>
 				<form id="loginForm">
 					<div class="form-group">
@@ -55,9 +55,9 @@
 			}
 			
 			$(".alert").hide();
-			$.post("/user/login",$("#loginForm").serialize(),function(res){
+			$.post("/admin/login",$("#loginForm").serialize(),function(res){
 				if(res.result){
-					location.href = "/";
+					location.href = "/admin/center";
 				}else{
 					$(".alert").html(res.message);
 					$(".alert").show();
