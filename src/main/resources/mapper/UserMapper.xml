@@ -3,26 +3,29 @@
 <mapper namespace="com.xujunqi.cms.dao.UserDao">
 
 	<select id="select" resultType="user">
-		SELECT * FROM cms_user
+		SELECT * FROM cms_user 
+		<where>
+			<if test="nickname!=null and nickname!=''">
+				nickname like '%${nickname}%'
+			</if>
+		</where>
 	</select>
-
+	
 	<select id="selectById" resultType="user">
-		SELECT * FROM cms_user WHERE
-		id=#{id}
+		SELECT * FROM cms_user WHERE id=#{id}
 	</select>
-
+	
 	<insert id="insert">
-		INSERT INTO
-		cms_user(username,headimg,password,nickname,birthday,gender,locked,score,role,url,create_time,update_time)VALUES
+		INSERT INTO cms_user(username,headimg,password,nickname,birthday,gender,locked,score,role,url,create_time,update_time)VALUES 
 		(#{username},#{headimg},#{password},#{nickname},#{birthday},#{gender},#{locked},#{score},#{role},#{url},#{create_time},#{update_time})
 	</insert>
-
+	
 	<update id="update">
 		UPDATE cms_user
-		SET username=#{username},headimg=#{headimg},password=#{password},nickname=#{nickname},birthday=#{birthday},gender=#{gender},locked=#{locked},score=#{score},role=#{role},url=#{url},create_time=#{create_time},update_time=#{update_time}
-		WHERE id=#{id}
+	 SET username=#{username},headimg=#{headimg},password=#{password},nickname=#{nickname},birthday=#{birthday},gender=#{gender},locked=#{locked},score=#{score},role=#{role},url=#{url},create_time=#{create_time},update_time=#{update_time} 
+	WHERE id=#{id}
 	</update>
-
+	
 	<delete id="delete">
 		DELETE FROM cms_user WHERE id in(${ids})
 	</delete>

@@ -4,26 +4,33 @@
 
 	<select id="select" resultType="Category">
 		SELECT * FROM cms_category
+		<where>
+			<if test="channel_id!=null and channel_id!=''">
+				channel_id=#{channel_id}
+			</if>
+		</where>
 	</select>
 
 	<select id="selectById" resultType="Category">
-		SELECT * FROM cms_category
-		WHERE id=#{id}
-	</select>
+		SELECT * FROM cms_category WHERE id=#{id}
 
-	<insert id="insert">
-		INSERT INTO cms_category(name,channel_id)
-		VALUES
-		(#{name},#{channel_id})
-	</insert>
+	</select>
 
 	<update id="update">
 		UPDATE cms_category
 		SET name=#{name},channel_id=#{channel_id}
 		WHERE id=#{id}
+
 	</update>
+
+	<insert id="insert">
+		INSERT INTO cms_category(name,channel_id)VALUES
+		(#{name},#{channel_id})
+
+	</insert>
 
 	<delete id="delete">
 		DELETE FROM cms_category WHERE id in(${ids})
+
 	</delete>
 </mapper>
