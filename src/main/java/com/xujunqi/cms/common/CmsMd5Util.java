@@ -16,10 +16,7 @@ public class CmsMd5Util {
 		return string2md5;
 	}
 	
-
 	public static void main(String[] args) {
 		System.out.println(md5("admin"));
 	}
-	
-
 }

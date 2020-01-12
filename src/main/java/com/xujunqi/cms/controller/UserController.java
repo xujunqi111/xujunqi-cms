@@ -109,11 +109,11 @@ public class UserController {
 	public @ResponseBody JsonResult register(User user) {
 		/** 用户名和密码不能为空 **/
 		if(StringUtil.isNull(user.getUsername()) || StringUtil.isNull(user.getPassword()) 
-				|| StringUtil.isNull(user.getPassword())) {
+				|| StringUtil.isNull(user.getRePassword())) {
 			return JsonResult.fail();
 		}
 		/** 判断两次输入的密码是否一致 **/
-		if(!user.getPassword().equals(user.getPassword())) {
+		if(!user.getPassword().equals(user.getRePassword())) {
 			return JsonResult.fail(10000,"两次输入的密码不一致");
 		}
 		/** 判断用户是否存在 **/
@@ -155,4 +155,5 @@ public class UserController {
 		userService.set(user);
 		return JsonResult.sucess();
 	}
+	
 }

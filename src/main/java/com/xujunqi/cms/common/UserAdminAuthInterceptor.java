@@ -9,9 +9,9 @@ public class UserAdminAuthInterceptor implements HandlerInterceptor{
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
-		Object userInfo = request.getSession().getAttribute(CmsConst.UserAdminSessionKey);
+		Object userInfo = request.getSession().getAttribute(CmsConst.UserSessionKey);
 		if(userInfo==null) {
-			response.sendRedirect("/admin/");
+			response.sendRedirect("/user/login");
 			return false;
 		}
 		return true;

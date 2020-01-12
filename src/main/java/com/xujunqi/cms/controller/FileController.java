@@ -21,31 +21,34 @@ public class FileController {
 
 	@Value("${upload.path}")
 	private String filePath;
-
+	
 	@Value("${pic.path}")
 	private String picPath;
-
 	/**
-	 * @Title: upload @Description: 文件上传 @param: @param
-	 * file @param: @return @return: Object @throws
+	 * @Title: upload   
+	 * @Description: 文件上传   
+	 * @param: @param file
+	 * @param: @return      
+	 * @return: Object      
+	 * @throws
 	 */
 	@RequestMapping("upload")
 	public @ResponseBody Object upload(@RequestParam("file") MultipartFile file) {
 		return uploadImg(file);
 	}
-
+	
 	@RequestMapping("uploadImg")
 	public @ResponseBody Object uploadImg(@RequestParam("imgFile") MultipartFile file) {
-		Map<String, Object> result = new HashMap<>();
+		Map<String,Object> result = new HashMap<>();
 		result.put("error", 1);
-		if (file.getSize() > 0) {
+		if(file.getSize()>0) {
 			String extName = FileUtil.getExtName(file.getOriginalFilename());
-			String fileName = UUID.randomUUID() + extName;
-			String fileFullName = filePath + fileName;
+			String fileName = UUID.randomUUID()+extName;
+			String fileFullName = filePath+fileName;
 			try {
 				file.transferTo(new File(fileFullName));
 				result.put("error", 0);
-				result.put("url", picPath + fileName);
+				result.put("url", picPath+fileName);
 				return result;
 			} catch (IllegalStateException | IOException e) {
 				e.printStackTrace();

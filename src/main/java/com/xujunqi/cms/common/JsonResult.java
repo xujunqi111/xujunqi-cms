@@ -94,5 +94,4 @@ public class JsonResult {
 		this.errorCode = errorCode;
 	}
 	
-
 }
