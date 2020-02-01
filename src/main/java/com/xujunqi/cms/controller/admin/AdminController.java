@@ -1,7 +1,6 @@
 package com.xujunqi.cms.controller.admin;
 
-import java.util.List;
-
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,94 +14,110 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.github.pagehelper.PageInfo;
 import com.xujunqi.cms.common.CmsConst;
+import com.xujunqi.cms.common.CmsMd5Util;
 import com.xujunqi.cms.common.JsonResult;
 import com.xujunqi.cms.pojo.Article;
-import com.xujunqi.cms.pojo.Category;
-import com.xujunqi.cms.pojo.Channel;
 import com.xujunqi.cms.pojo.User;
 import com.xujunqi.cms.service.ArticleService;
+import com.xujunqi.cms.service.UserService;
+import com.xujunqi.common.utils.StringUtil;
+
 @Controller
 @RequestMapping("/admin/")
 public class AdminController{
 	@Autowired
+	private UserService userService;
+	@Autowired
 	private ArticleService articleService;
 	
 	/**
-	 * @Title: add   
-	 * @Description: 跳转到文章编辑页面
+	 * @Title: tologin   
+	 * @Description: 登录页面   
 	 * @param: @return      
 	 * @return: String      
 	 * @throws
 	 */
-	@GetMapping("/add")
-	public String toAdd(Integer id,Model model) {
-		List<Channel> channelList = articleService.getChannelAll();
-		model.addAttribute("channelList", channelList);
-		if(id!=null) {
-			Article article = articleService.getById(id);
-			List<Category> cateList = articleService.getCateListByChannelId(article.getChannel_id());
-			model.addAttribute("article", article);
-			model.addAttribute("cateList", cateList);
-		}
-		return "article/add";
+	@GetMapping("/")
+	public String tologin() {
+		return "admin/login";
 	}
 	/**
-	 * @Title: save   
-	 * @Description: 保存文章   
-	 * @param: @param article
-	 * @param: @return      
-	 * @return: String      
-	 * @throws
-	 */
-	@PostMapping("/save")
-	public @ResponseBody JsonResult save(Article article,HttpSession session) {
-		User userInfo = (User)session.getAttribute(CmsConst.UserSessionKey);
-		article.setUser_id(userInfo.getId());
-		articleService.save(article);
-		return JsonResult.sucess();
-	}
-	/**
-	 * @Title: getCateListByChannelId   
-	 * @Description: 根据频道Id查询分类列表  
-	 * @param: @param channelId
+	 * @Title: login   
+	 * @Description: 管理员登录   
+	 * @param: @param user
+	 * @param: @param session
 	 * @param: @return      
 	 * @return: JsonResult      
 	 * @throws
 	 */
-	@GetMapping("/getCateListByChannelId")
-	public @ResponseBody JsonResult getCateListByChannelId(Integer channelId) {
-		List<Category> cateList = articleService.getCateListByChannelId(channelId);
-		return JsonResult.sucess(cateList);
+	@PostMapping("/login")
+	public @ResponseBody JsonResult login(User user,HttpSession session) {
+		/** 用户名和密码不能为空 **/
+		if(StringUtil.isNull(user.getUsername()) || StringUtil.isNull(user.getPassword()) ) {
+			return JsonResult.fail();
+		}
+		/** 判断用户是否存在 **/
+		User userInfo = userService.getByUsername(user.getUsername());
+		if(userInfo==null) {
+			return JsonResult.fail(10000,"用户名或密码不正确");
+		}
+		/** 判断用户是否被禁用 **/
+		if(userService.locked(user.getUsername())) {
+			return JsonResult.fail(10000,"该用户已被禁用，请联系管理员");
+		}
+		/** 是否为管理员 **/
+		if(!"1".equals(userInfo.getRole())) {
+			return JsonResult.fail(10000,"只有官员才能登录");
+		}
+		/** 判断密码是否正确 **/
+		String password = user.getPassword();
+		String md5Password = CmsMd5Util.md5(password);
+		if(!md5Password.equals(userInfo.getPassword())) {
+			return JsonResult.fail(10000,"用户名或密码不正确");
+		}
+		/** 设置session **/
+		session.setAttribute(CmsConst.UserAdminSessionKey, userInfo);
+		return JsonResult.sucess();
 	}
 	
-	/**
-	 * @Title: articles   
-	 * @Description: 文章管理（我的文章）   
-	 * @param: @return      
-	 * @return: String      
-	 * @throws
-	 */
+	@GetMapping("/signOut")
+	public String signOut(HttpServletResponse response,HttpSession session) {
+		session.setAttribute(CmsConst.UserAdminSessionKey, null);
+		return "redirect:/admin/";
+	}
+	
+	@RequestMapping("/center")
+	public String userCenter() {
+		return "admin/center";
+	}
+	
+	@RequestMapping("/user")
+	public String user(User user,Model model,
+			@RequestParam(value="pageNum",defaultValue="1") Integer pageNum,@RequestParam(value="pageSize",defaultValue="3") Integer pageSize) {
+		PageInfo<User> pageInfo = userService.getPageInfo(user,pageNum,pageSize);
+		model.addAttribute("pageInfo", pageInfo);
+		return "admin/user";
+	}
+	
+	@RequestMapping("/updateLocked")
+	public @ResponseBody JsonResult updateLocked(User user) {
+		boolean result = userService.updateLocked(user.getId());
+		return JsonResult.sucess();
+	}
+	
 	@RequestMapping("/articles")
 	public String articles(Article article,Model model,HttpSession session,
 			@RequestParam(value="pageNum",defaultValue="1") Integer pageNum,
 			@RequestParam(value="pageSize",defaultValue="2") Integer pageSize) {
-		User userInfo = (User)session.getAttribute(CmsConst.UserSessionKey);
-		article.setUser_id(userInfo.getId());
+		article.setStatusStr("0,1,-1,3");
 		PageInfo<Article> pageInfo = articleService.getPageInfo(article, pageNum, pageSize);
 		model.addAttribute("pageInfo", pageInfo);
-		return "article/articles";
+		return "admin/articles";
 	}
-	/**
-	 * @Title: deleteByIds   
-	 * @Description: 根据Ids批量删除文章   
-	 * @param: @param ids
-	 * @param: @return      
-	 * @return: JsonResult      
-	 * @throws
-	 */
-	@PostMapping("/deleteByIds")
-	public @ResponseBody JsonResult deleteByIds(String ids) {
-		articleService.deleteByIds(ids);
+	
+	@RequestMapping("/check")
+	public @ResponseBody JsonResult check(Article article) {
+		articleService.check(article);
 		return JsonResult.sucess();
 	}
 }
