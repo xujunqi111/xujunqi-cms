@@ -30,5 +30,5 @@ public class VoteContent {
 		return "Vote_content [id=" + id + ", title=" + title + ", content=" + content + "]";
 	}
 
-
+	
 }

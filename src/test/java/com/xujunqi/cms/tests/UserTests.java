@@ -8,30 +8,38 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.xujunqi.cms.dao.ArticleDao;
+import com.xujunqi.cms.dao.ChannelDao;
 import com.xujunqi.cms.dao.UserDao;
 import com.xujunqi.cms.pojo.User;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "classpath:spring-beans.xml")
-public class UserTests {
 
+
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations="classpath:spring-beans.xml")
+public class UserTests {
 	@Autowired
 	private UserDao userDao;
-
+	@Autowired
+	private ArticleDao articleDao;
+	@Autowired
+	private ChannelDao channelDao;
+	
 	@Test
 	public void test() {
 		List<User> userList = userDao.select(null);
 		System.out.println(userList);
-
-		User user = new User();
-		user.setNickname("jj");
-		user.setUsername("22");
-		userDao.insert(user);
+		channelDao.select(null);
 		
-		//userDao.delete("202");
-
+		User user = new User();
+		user.setNickname("lisi");
+//		userDao.insert(user);
+		user.setId(200);
+//		userDao.update(user);
+		
+//		userDao.delete("200");
+		
 		User selectById = userDao.selectById(199);
 		System.out.println(selectById);
 	}
-
 }

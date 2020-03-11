@@ -38,4 +38,6 @@ public class ArticleVote {
 		return "Article_vote [id=" + id + ", article_id=" + article_id + ", user_id=" + user_id + ", option=" + option
 				+ "]";
 	}
+
+	
 }

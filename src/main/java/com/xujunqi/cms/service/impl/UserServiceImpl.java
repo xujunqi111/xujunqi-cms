@@ -12,8 +12,10 @@ import com.xujunqi.cms.common.CmsMd5Util;
 import com.xujunqi.cms.dao.UserDao;
 import com.xujunqi.cms.pojo.User;
 import com.xujunqi.cms.service.UserService;
+import com.xujunqi.common.utils.RandomUtil;
+
 @Service
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl implements UserService{
 	@Autowired
 	private UserDao userDao;
 
@@ -71,4 +73,11 @@ public class UserServiceImpl implements UserService {
 		return userDao.update(user)>0;
 	}
 
+	@Override
+	public Integer getRandomUserId() {
+		List<Integer> userIdList = userDao.selectIdList();
+		int random = RandomUtil.random(0, userIdList.size()-1);
+		return userIdList.get(random);
+	}
+	
 }

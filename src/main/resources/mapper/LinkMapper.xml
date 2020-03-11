@@ -1,9 +1,15 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xujunqi.cms.dao.LinkDao">
-
 	<select id="select" resultType="Link">
 		SELECT * FROM cms_link
+		<where>
+			<if test="text!=null and text!=''">
+				`text` like '%${text}%'
+			</if>
+		</where>
 	</select>
 
 	<select id="selectById" resultType="Link">
@@ -24,4 +30,5 @@
 	<delete id="delete">
 		DELETE FROM cms_link WHERE id in(${ids})
 	</delete>
+
 </mapper>

@@ -22,9 +22,10 @@ import com.xujunqi.cms.service.ArticleService;
 import com.xujunqi.cms.service.UserService;
 import com.xujunqi.common.utils.StringUtil;
 
+
 @Controller
 @RequestMapping("/admin/")
-public class AdminController{
+public class AdminController {
 	@Autowired
 	private UserService userService;
 	@Autowired
@@ -101,7 +102,7 @@ public class AdminController{
 	
 	@RequestMapping("/updateLocked")
 	public @ResponseBody JsonResult updateLocked(User user) {
-		boolean result = userService.updateLocked(user.getId());
+		userService.updateLocked(user.getId());
 		return JsonResult.sucess();
 	}
 	
@@ -120,4 +121,5 @@ public class AdminController{
 		articleService.check(article);
 		return JsonResult.sucess();
 	}
+
 }

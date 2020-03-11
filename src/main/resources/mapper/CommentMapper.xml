@@ -1,9 +1,16 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xujunqi.cms.dao.CommentDao">
-<select id="select" resultType="Comment">
+	<select id="select" resultType="Comment">
 		SELECT * FROM cms_comment
-
+		<where>
+			<if test="articleId!=null">
+				articleId=#{articleId}
+			</if>
+		</where>
+	    order by id desc
 	</select>
 
 	<select id="selectById" resultType="Comment">
@@ -27,4 +34,5 @@
 	<delete id="delete">
 		DELETE FROM cms_comment WHERE id in(${ids})
 	</delete>
+
 </mapper>

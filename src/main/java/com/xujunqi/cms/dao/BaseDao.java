@@ -50,5 +50,4 @@ public interface BaseDao<T> {
 	 * @throws
 	 */
 	int delete(@Param("ids") String ids);
-
 }

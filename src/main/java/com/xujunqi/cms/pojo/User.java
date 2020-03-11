@@ -3,7 +3,7 @@ package com.xujunqi.cms.pojo;
 import java.util.Date;
 
 public class User {
-/** ----------------扩展属性----------------- **/
+	/** ----------------扩展属性----------------- **/
 	
 	/** 扩展属性 **/
 	private String rePassword;
@@ -129,4 +129,7 @@ public class User {
 				+ ", score=" + score + ", role=" + role + ", url=" + url + ", create_time=" + create_time
 				+ ", update_time=" + update_time + "]";
 	}
+	
+
+	
 }

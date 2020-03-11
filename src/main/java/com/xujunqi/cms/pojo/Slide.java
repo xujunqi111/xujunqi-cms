@@ -1,5 +1,9 @@
 package com.xujunqi.cms.pojo;
 
+/**
+ * @author 86183
+ *
+ */
 public class Slide {
 	/**  **/
 	private Integer id;
@@ -37,4 +41,6 @@ public class Slide {
 	public String toString() {
 		return "Slide [id=" + id + ", title=" + title + ", picture=" + picture + ", url=" + url + "]";
 	}
+
+	
 }

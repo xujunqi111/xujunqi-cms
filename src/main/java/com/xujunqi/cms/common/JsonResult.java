@@ -1,6 +1,10 @@
 package com.xujunqi.cms.common;
 
-//json接口包装类    
+/**
+ * @ClassName:  JsonResult   
+ * @Description:json接口包装类    
+ * @date:   2020年1月10日 上午10:27:09
+ */
 public class JsonResult {
 	/** json接口成功返回true，否则返回false **/
 	private boolean result;
@@ -93,5 +97,6 @@ public class JsonResult {
 	public void setErrorCode(int errorCode) {
 		this.errorCode = errorCode;
 	}
+	
 	
 }

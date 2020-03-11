@@ -22,4 +22,5 @@ public class ArticleTag {
 		return "Article_tag [aid=" + aid + ", tid=" + tid + "]";
 	}
 
+	
 }

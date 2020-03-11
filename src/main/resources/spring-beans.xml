@@ -10,6 +10,28 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 
 
+<!-- ============================================================================================= -->
+	<bean id="jedisConnectionFactory"
+		class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory">
+		<property name="hostName" value="192.168.107.128" />
+		<property name="port" value="6379" />
+	</bean>
+	<bean id="redisTemplate" class="org.springframework.data.redis.core.StringRedisTemplate">
+		<property name="connectionFactory" ref="jedisConnectionFactory" />
+		<!-- 对象的序列化配置 -->
+		<property name="keySerializer">
+			<bean class="org.springframework.data.redis.serializer.StringRedisSerializer" />
+		</property>
+		<property name="valueSerializer">
+			<bean class="org.springframework.data.redis.serializer.JdkSerializationRedisSerializer" />
+		</property>
+	</bean>
+	
+	<import resource="classpath:/kafka-producer.xml"/>
+	<import resource="classpath:/kafka-consumer.xml"/>
+	<import resource="classpath:/elasticsearch.xml"/>
+
+<!-- ============================================================================================= -->
 	<!-- 1、注解扫描器 -->
 	<context:component-scan base-package="com.xujunqi.cms" >
 		<!-- 排除要要扫描的controller -->
@@ -84,6 +106,7 @@
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<!-- basePackage :mapper接口所在的包 -->
 		<property name="basePackage" value="com.xujunqi.cms.dao"></property>
-
 	</bean>
+	
+	
 </beans>

@@ -49,4 +49,7 @@ public class Collect {
 		return "Collect [id=" + id + ", text=" + text + ", url=" + url + ", created=" + created + ", user_id=" + user_id
 				+ "]";
 	}
+	
+
+	
 }

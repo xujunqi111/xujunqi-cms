@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.github.pagehelper.PageInfo;
+
 import com.xujunqi.cms.common.CmsConst;
 import com.xujunqi.cms.common.JsonResult;
 import com.xujunqi.cms.pojo.Article;
@@ -21,6 +22,7 @@ import com.xujunqi.cms.pojo.Category;
 import com.xujunqi.cms.pojo.Channel;
 import com.xujunqi.cms.pojo.User;
 import com.xujunqi.cms.service.ArticleService;
+
 
 @Controller
 @RequestMapping("/article/")
@@ -84,9 +86,11 @@ public class ArticleController {
 	 * @throws
 	 */
 	@RequestMapping("/articles")
-	public String articles(Article article,Model model,
+	public String articles(Article article,Model model,HttpSession session,
 			@RequestParam(value="pageNum",defaultValue="1") Integer pageNum,
 			@RequestParam(value="pageSize",defaultValue="2") Integer pageSize) {
+		User userInfo = (User)session.getAttribute(CmsConst.UserSessionKey);
+		article.setUser_id(userInfo.getId());
 		PageInfo<Article> pageInfo = articleService.getPageInfo(article, pageNum, pageSize);
 		model.addAttribute("pageInfo", pageInfo);
 		return "article/articles";

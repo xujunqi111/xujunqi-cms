@@ -4,7 +4,6 @@ import com.github.pagehelper.PageInfo;
 import com.xujunqi.cms.pojo.User;
 
 public interface UserService {
-
 	/**
 	 * @Title: register   
 	 * @Description: 用户注册   
@@ -71,4 +70,12 @@ public interface UserService {
 	 * @throws
 	 */
 	public boolean updateLocked(Integer id);
+	/**
+	 * @Title: getRandomUserId   
+	 * @Description: 获取随机用户Id   
+	 * @param: @return      
+	 * @return: Integer      
+	 * @throws
+	 */
+	Integer getRandomUserId();
 }

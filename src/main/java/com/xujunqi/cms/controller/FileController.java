@@ -18,7 +18,7 @@ import com.xujunqi.common.utils.FileUtil;
 @Controller
 @RequestMapping("/file/")
 public class FileController {
-
+	
 	@Value("${upload.path}")
 	private String filePath;
 	

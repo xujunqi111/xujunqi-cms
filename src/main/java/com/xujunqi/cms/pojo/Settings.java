@@ -63,4 +63,6 @@ public class Settings {
 				+ ", article_list_size=" + article_list_size + ", slide_size=" + slide_size + ", admin_username="
 				+ admin_username + ", admin_password=" + admin_password + "]";
 	}
+
+	
 }

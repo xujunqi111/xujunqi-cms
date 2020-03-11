@@ -4,6 +4,8 @@ import java.util.List;
 
 import com.xujunqi.cms.pojo.Slide;
 
+
+
 public interface SlideService {
 	/**
 	 * @Title: getAll   
@@ -13,5 +15,4 @@ public interface SlideService {
 	 * @throws
 	 */
 	List<Slide> getAll();
-
 }
